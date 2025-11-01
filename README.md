@@ -26,37 +26,34 @@ The system integrates **image classification**, **OCR**, and **web-based automat
 
 ## 🧩 System Architecture
 
-sql
-Copy code
-         +--------------------------+
-         |      User Uploads Image  |
-         +-------------+------------+
-                       |
-                       v
-          +-------------------------+
-          |   Image Preprocessing   |
-          | (OpenCV + NumPy)        |
-          +-------------------------+
-                       |
-                       v
-    +------------------+------------------+
-    |                                     |
-    v                                     v
-+--------------------+ +----------------------+
-| Freshness Model | | OCR Date Extractor |
-| (CNN - TensorFlow) | | (EasyOCR / OCR API) |
-+--------------------+ +----------------------+
-| |
-+------------------+------------------+
-|
-v
-+---------------------------+
-| Flask Web Interface |
-| (Prediction + Display) |
-+---------------------------+
-
-yaml
-Copy code
+```
+             +--------------------------+
+             |      User Uploads Image  |
+             +-------------+------------+
+                           |
+                           v
+              +-------------------------+
+              |   Image Preprocessing   |
+              | (OpenCV + NumPy)        |
+              +-------------------------+
+                           |
+                           v
+        +------------------+------------------+
+        |                                     |
+        v                                     v
++--------------------+           +----------------------+
+|  Freshness Model   |           |   OCR Date Extractor |
+| (CNN - TensorFlow) |           | (EasyOCR / OCR API)  |
++--------------------+           +----------------------+
+        |                                     |
+        +------------------+------------------+
+                           |
+                           v
+                +---------------------------+
+                |  Flask Web Interface       |
+                |  (Prediction + Display)    |
+                +---------------------------+
+```
 
 ---
 
@@ -77,27 +74,26 @@ Copy code
 
 ## 📁 Project Structure
 
+```
 📦 Food_Expiry_Tracker
-┣ 📂 dataset
-┃ ┣ 📂 fresh
-┃ ┗ 📂 spoiled
-┣ 📂 static
-┃ ┗ (UI images, CSS, JS)
-┣ 📂 templates
-┃ ┣ index.html
-┃ ┗ result.html
-┣ 📂 uploads
-┃ ┗ (uploaded images)
-┣ 📜 food_freshness.py
-┣ 📜 ocr_extractor.py
-┣ 📜 train_model.py
-┣ 📜 food_expiry_model.h5
-┣ 📜 app.py
-┣ 📜 requirements.txt
-┗ 📜 README.md
-
-yaml
-Copy code
+ ┣ 📂 dataset
+ ┃ ┣ 📂 fresh
+ ┃ ┗ 📂 spoiled
+ ┣ 📂 static
+ ┃ ┗ (UI images, CSS, JS)
+ ┣ 📂 templates
+ ┃ ┣ index.html
+ ┃ ┗ result.html
+ ┣ 📂 uploads
+ ┃ ┗ (uploaded images)
+ ┣ 📜 food_freshness.py
+ ┣ 📜 ocr_extractor.py
+ ┣ 📜 train_model.py
+ ┣ 📜 food_expiry_model.h5
+ ┣ 📜 app.py
+ ┣ 📜 requirements.txt
+ ┗ 📜 README.md
+```
 
 ---
 
@@ -107,121 +103,127 @@ Copy code
 ```bash
 git clone https://github.com/yourusername/Food-Expiry-Prediction.git
 cd Food-Expiry-Prediction
-Step 2️⃣ — Create Virtual Environment (Optional)
-If using Anaconda:
+```
 
-bash
-Copy code
+### Step 2️⃣ — Create Virtual Environment (Optional)
+If using Anaconda:
+```bash
 conda create -n foodenv python=3.12
 conda activate foodenv
-Or using venv:
+```
 
-bash
-Copy code
+Or using venv:
+```bash
 python -m venv env
 source env/bin/activate    # (Linux/Mac)
 env\Scripts\activate       # (Windows)
-Step 3️⃣ — Install Dependencies
-bash
-Copy code
+```
+
+### Step 3️⃣ — Install Dependencies
+```bash
 pip install -r requirements.txt
-Step 4️⃣ — Run the Application
-bash
-Copy code
+```
+
+### Step 4️⃣ — Run the Application
+```bash
 python app.py
-Then open the app in your browser at:
-👉 http://127.0.0.1:5000/
+```
 
-🧪 Model Details
-🔹 Freshness Detection Model (CNN)
-Input size: 128×128 pixels
+Then open the app in your browser at:  
+👉 `http://127.0.0.1:5000/`
 
-Layers: Convolution → ReLU → MaxPooling → Dense → Softmax
+---
 
-Output: Fresh or Spoiled
+## 🧪 Model Details
 
-Model Training File: train_model.py
-Trained Model Saved As: food_expiry_model.h5
+### 🔹 **Freshness Detection Model (CNN)**
+- Input size: 128×128 pixels  
+- Layers: Convolution → ReLU → MaxPooling → Dense → Softmax  
+- Output: `Fresh` or `Spoiled`
 
-🔹 OCR Extraction
-Used EasyOCR or OCR.Space API
+**Model Training File:** `train_model.py`  
+**Trained Model Saved As:** `food_expiry_model.h5`
 
-Extracts only the boxed text region (for higher accuracy)
+### 🔹 **OCR Extraction**
+- Used **EasyOCR** or **OCR.Space API**  
+- Extracts only the boxed text region (for higher accuracy)  
+- Detects keywords like `EXP`, `MFG`, `Best Before`, etc.  
+- Parses dates using **regex** patterns like:
+  ```
+  \d{2}/\d{2}/\d{4} or \d{2}-\d{2}-\d{4}
+  ```
 
-Detects keywords like EXP, MFG, Best Before, etc.
+---
 
-Parses dates using regex patterns like:
+## 💻 Web Application Flow
 
-swift
-Copy code
-\d{2}/\d{2}/\d{4} or \d{2}-\d{2}-\d{4}
-💻 Web Application Flow
-Upload Image of a food item or package
+1. **Upload Image** of a food item or package  
+2. System performs:
+   - CNN model → Freshness prediction  
+   - OCR → Expiry/Manufacture date extraction  
+3. **Results Displayed** on `result.html` page:
+   - Product freshness status (✅ Fresh / ❌ Spoiled)
+   - Detected expiry/manufacture dates
+   - Remaining shelf life (if applicable)
 
-System performs:
+---
 
-CNN model → Freshness prediction
+## 🧮 Algorithms Used
 
-OCR → Expiry/Manufacture date extraction
+| Task | Algorithm / Model |
+|------|-------------------|
+| Image Classification | Convolutional Neural Network (CNN) |
+| Text Extraction | EasyOCR / OCR.Space API |
+| Image Preprocessing | OpenCV Filters & Thresholding |
+| Date Recognition | Regex-based text pattern matching |
+| File Handling & UI | Flask Web Framework |
 
-Results Displayed on result.html page:
+---
 
-Product freshness status (✅ Fresh / ❌ Spoiled)
+## 📈 Sample Output
 
-Detected expiry/manufacture dates
+| Input | Output |
+|-------|---------|
+| 🍎 Apple Image | “Fresh” (Confidence: 0.93) |
+| 🍅 Tomato Image | “Spoiled” (Confidence: 0.88) |
+| 📦 Packaged Food Label | Extracted: “MFG: 10/09/2024”, “EXP: 10/10/2025” |
 
-Remaining shelf life (if applicable)
+---
 
-🧮 Algorithms Used
-Task	Algorithm / Model
-Image Classification	Convolutional Neural Network (CNN)
-Text Extraction	EasyOCR / OCR.Space API
-Image Preprocessing	OpenCV Filters & Thresholding
-Date Recognition	Regex-based text pattern matching
-File Handling & UI	Flask Web Framework
+## ⚠️ Limitations
+- OCR accuracy depends on image quality and text clarity.  
+- Works best for **printed labels**, not handwritten ones.  
+- Requires stable lighting and focused images.  
+- Model limited to trained dataset (e.g., specific fruits).
 
-📈 Sample Output
-Input	Output
-🍎 Apple Image	“Fresh” (Confidence: 0.93)
-🍅 Tomato Image	“Spoiled” (Confidence: 0.88)
-📦 Packaged Food Label	Extracted: “MFG: 10/09/2024”, “EXP: 10/10/2025”
+---
 
-⚠️ Limitations
-OCR accuracy depends on image quality and text clarity.
+## 🚀 Future Enhancements
+- 📱 Develop a **mobile app** for live expiry detection.  
+- ☁️ Integrate with **cloud database** for auto reminders.  
+- 🧾 Generate **PDF reports** for food inventory.  
+- 🔍 Extend CNN to classify multiple categories (fruit types).  
+- 🤖 Use **transformer-based OCR** (like Tesseract + Vision Transformer).  
 
-Works best for printed labels, not handwritten ones.
+---
 
-Requires stable lighting and focused images.
+## 👨‍💻 Contributors
+| Name | Role |
+|------|------|
+| Deepuu | Project Lead, ML Model Development, OCR Integration |
+| Team Members | Dataset Collection, Web UI, Testing |
 
-Model limited to trained dataset (e.g., specific fruits).
+---
 
-🚀 Future Enhancements
-📱 Develop a mobile app for live expiry detection.
+## 🏁 Conclusion
+This project demonstrates the real-world use of **AI and Computer Vision** in food quality monitoring.  
+By combining **deep learning (CNN)** and **OCR**, the system helps users **detect spoiled food**, **track expiry dates**, and **reduce wastage**, making it an innovative and impactful application in smart food management.
 
-☁️ Integrate with cloud database for auto reminders.
+---
 
-🧾 Generate PDF reports for food inventory.
-
-🔍 Extend CNN to classify multiple categories (fruit types).
-
-🤖 Use transformer-based OCR (like Tesseract + Vision Transformer).
-
-👨‍💻 Contributors
-Name	Role
-Deepuu	Project Lead, ML Model Development, OCR Integration
-Team Members	Dataset Collection, Web UI, Testing
-
-🏁 Conclusion
-This project demonstrates the real-world use of AI and Computer Vision in food quality monitoring.
-By combining deep learning (CNN) and OCR, the system helps users detect spoiled food, track expiry dates, and reduce wastage, making it an innovative and impactful application in smart food management.
-
-📚 References
-OpenCV Documentation
-
-TensorFlow Keras API
-
-EasyOCR GitHub
-
-OCR.Space API
-
-Python Flask Docs
+## 📚 References
+- [OpenCV Documentation](https://docs.opencv.org/)
+- [TensorFlow Keras API](https://www.tensorflow.org/guide/keras)
+- [EasyOCR GitHub](https://github.com/JaidedAI/EasyOCR)
+- [OCR.Space API](https://ocr.space/ocrapi)
+- [Python Flask Docs](https://flask.palletsprojects.com/)
