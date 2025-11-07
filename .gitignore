@@ -1,5 +1,7 @@
 # Environment variables
 .env
+HUGGINGFACE_REPO=egwegwgewg/food_expiry_model
+GEMINI_API_KEY=AIzaSyBMAA2wkDll-xxqvmr38kICEmxMY65qUJQ
 
 # Python
 __pycache__/
@@ -18,6 +20,14 @@ uploads/
 *.png
 *.bmp
 *.webp
+
+# Model files
+*.h5
+*.pkl
+*.pth
+*.pt
+*.onnx
+*.pb
 
 # IDE
 .vscode/

@@ -7,6 +7,53 @@ This guide will help you deploy your Food Expiry Tracker application online for 
 - GitHub account
 - Git installed on your local machine
 - Your Gemini API key
+- **Google Drive account** (for hosting the model file)
+
+---
+
+## 🎯 IMPORTANT: Model File Hosting
+
+Since `food_expiry_model.h5` is too large for GitHub (>100MB), we'll host it separately:
+
+### Option A: Google Drive (Recommended - Free & Easy)
+
+1. **Upload your model to Google Drive:**
+   - Go to [Google Drive](https://drive.google.com)
+   - Upload `food_expiry_model.h5`
+   - Right-click → Share → Change to "Anyone with the link"
+   - Copy the file ID from the share link
+   - Example: `https://drive.google.com/file/d/1ABC123xyz/view` → File ID = `1ABC123xyz`
+
+2. **Update your code to auto-download the model:**
+
+````python
+// filepath: d:\foodexpirytracker\food_freshness.py
+import os
+import gdown
+from tensorflow import keras
+import numpy as np
+from PIL import Image
+import base64
+from io import BytesIO
+
+class FreshnessAnalyzer:
+    def __init__(self, model_path='food_expiry_model.h5'):
+        self.model_path = model_path
+        
+        # Auto-download model from Google Drive if not exists
+        if not os.path.exists(model_path):
+            print("🔽 Downloading model from Google Drive...")
+            # Replace with your actual Google Drive file ID
+            file_id = os.environ.get('MODEL_FILE_ID', 'YOUR_GOOGLE_DRIVE_FILE_ID')
+            url = f"https://drive.google.com/uc?id={file_id}"
+            gdown.download(url, model_path, quiet=False)
+            print("✅ Model downloaded successfully!")
+        
+        self.model = keras.models.load_model(model_path)
+        self.class_names = ['fresh', 'not fresh']
+    
+    # ...existing code...
+````
 
 ---
 
@@ -19,6 +66,7 @@ This guide will help you deploy your Food Expiry Tracker application online for 
 1. Create a `.env` file in your project root (for local testing):
 ```bash
 GEMINI_API_KEY=your_actual_gemini_api_key_here
+MODEL_FILE_ID=your_google_drive_file_id_here
 ```
 
 2. Make sure `.env` is in your `.gitignore` (already done!)
@@ -60,7 +108,9 @@ git push -u origin main
 
 4. **Set Environment Variables:**
    - Click "Environment" tab
-   - Add: `GEMINI_API_KEY` = `your_gemini_api_key`
+   - Add: `
+    = `your_gemini_api_key`
+    = `your_google_drive_file_id`
 
 5. **Deploy:**
    - Click "Create Web Service"
@@ -90,6 +140,7 @@ git push -u origin main
 3. **Configure:**
    - Railway auto-detects Python
    - Add environment variable: `GEMINI_API_KEY`
+   - Add environment variable: `MODEL_FILE_ID`
 
 4. **Generate domain:**
    - Go to Settings → Generate Domain
