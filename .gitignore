@@ -1,7 +1,5 @@
 # Environment variables
 .env
-HUGGINGFACE_REPO=egwegwgewg/food_expiry_model
-GEMINI_API_KEY=AIzaSyBMAA2wkDll-xxqvmr38kICEmxMY65qUJQ
 
 # Python
 __pycache__/

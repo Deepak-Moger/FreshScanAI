@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: food-expiry-tracker
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: HUGGINGFACE_REPO
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /
