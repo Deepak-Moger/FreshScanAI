@@ -1,3 +1,13 @@
+---
+title: Food Expiry API
+emoji: 🥫
+colorFrom: green
+colorTo: blue
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
 # 🥫 Food Expiry Prediction and Freshness Detection using AI/ML
 
 ## 📌 Project Overview
