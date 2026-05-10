@@ -11,8 +11,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of your files
 COPY . .
 
-# Run your script to download the huge .h5 file during the build!
-RUN python download_model.py
+# Note: Model file is downloaded on first API request (lazy loading)
+# Set PORT environment variable (optional, can be overridden)
+ENV PORT=7860
 
 # Expose the Hugging Face port
 EXPOSE 7860
