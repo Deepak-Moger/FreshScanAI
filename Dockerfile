@@ -1,5 +1,5 @@
-# Use official Python image
-FROM python:3.9-slim
+# Use official Python image (3.11 for TensorFlow compatibility)
+FROM python:3.11-slim
 
 # Set the working directory
 WORKDIR /app
