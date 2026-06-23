@@ -1,42 +1,17 @@
+# v0 sandbox internal files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+.snowflake/
+.v0-trash/
+.vercel/
+
 # Environment variables
-.env
+.env*.local
 
-# Python
+# Common ignores
+node_modules
+.next/
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-ENV/
-
-# Uploads
-uploads/
-*.jpg
-*.jpeg
-*.png
-*.bmp
-*.webp
-
-# Large ML model files (downloaded during Docker build)
-*.h5
-food_expiry_model/
-
-# Model files
-*.h5
-*.pkl
-*.pth
-*.pt
-*.onnx
-*.pb
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
+tsconfig.tsbuildinfo
 .DS_Store
-Thumbs.db
