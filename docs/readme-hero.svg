@@ -1,0 +1,59 @@
+<svg width="1200" height="620" viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">FreshScan AI dashboard preview</title>
+  <desc id="desc">A stylized product preview for a food freshness scanner dashboard with upload, webcam, and OCR results.</desc>
+  <rect width="1200" height="620" rx="34" fill="#08110f"/>
+  <rect x="1" y="1" width="1198" height="618" rx="33" stroke="#1d3b34" stroke-width="2"/>
+  <path d="M0 476C163 422 278 447 419 493C560 539 702 606 867 546C1032 486 1116 362 1200 382V620H0V476Z" fill="#0f2f29"/>
+  <path d="M0 121C172 91 255 156 390 166C525 176 641 90 790 81C939 72 1037 118 1200 74V0H0V121Z" fill="#10231f"/>
+  <circle cx="979" cy="149" r="128" fill="#153a33"/>
+  <circle cx="191" cy="487" r="116" fill="#172a35"/>
+
+  <g transform="translate(76 78)">
+    <rect width="1048" height="464" rx="28" fill="#0c1715" stroke="#24443d" stroke-width="2"/>
+    <rect x="24" y="24" width="1000" height="56" rx="16" fill="#101f1c"/>
+    <circle cx="58" cy="52" r="9" fill="#10b981"/>
+    <circle cx="88" cy="52" r="9" fill="#f59e0b"/>
+    <circle cx="118" cy="52" r="9" fill="#ef4444"/>
+    <text x="158" y="59" fill="#d8f7ed" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">FreshScan AI</text>
+    <text x="838" y="58" fill="#8bb8aa" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">Next.js + Flask + TensorFlow</text>
+
+    <g transform="translate(40 112)">
+      <rect width="408" height="300" rx="20" fill="#101f1c" stroke="#24443d"/>
+      <rect x="26" y="24" width="356" height="198" rx="18" fill="#16342d"/>
+      <path d="M53 191C96 127 129 156 168 116C203 80 226 86 257 119C287 151 310 135 354 190V222H53V191Z" fill="#1f6b56"/>
+      <path d="M96 80C133 58 173 74 184 116C147 125 105 116 96 80Z" fill="#3ddc97"/>
+      <path d="M235 72C277 51 318 74 326 119C284 126 245 113 235 72Z" fill="#fbbf24"/>
+      <path d="M47 122H361" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+      <rect x="26" y="242" width="170" height="34" rx="10" fill="#10b981"/>
+      <text x="66" y="265" fill="#06251f" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="800">Analyze</text>
+      <rect x="210" y="242" width="172" height="34" rx="10" fill="#132a26" stroke="#2c4f46"/>
+      <text x="256" y="265" fill="#bcebdd" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Reset</text>
+    </g>
+
+    <g transform="translate(482 112)">
+      <rect width="244" height="300" rx="20" fill="#101f1c" stroke="#24443d"/>
+      <text x="26" y="44" fill="#8bb8aa" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">FRESHNESS STATUS</text>
+      <circle cx="122" cy="142" r="70" fill="#0d2d26" stroke="#10b981" stroke-width="12"/>
+      <path d="M91 142L112 164L157 112" stroke="#7cf2bf" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="78" y="244" fill="#d8f7ed" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="32" font-weight="800">Fresh</text>
+      <text x="76" y="270" fill="#8bb8aa" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14">91.4% confidence</text>
+    </g>
+
+    <g transform="translate(760 112)">
+      <rect width="248" height="300" rx="20" fill="#101f1c" stroke="#24443d"/>
+      <text x="24" y="44" fill="#8bb8aa" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">EXPIRY OCR</text>
+      <rect x="24" y="70" width="200" height="58" rx="14" fill="#172a35" stroke="#2e4b5d"/>
+      <text x="44" y="94" fill="#dcecff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">Best before</text>
+      <text x="44" y="116" fill="#fbbf24" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="800">15/09/2026</text>
+      <rect x="24" y="154" width="200" height="18" rx="9" fill="#1d3b34"/>
+      <rect x="24" y="154" width="154" height="18" rx="9" fill="#10b981"/>
+      <rect x="24" y="192" width="200" height="18" rx="9" fill="#1d3b34"/>
+      <rect x="24" y="192" width="118" height="18" rx="9" fill="#38bdf8"/>
+      <rect x="24" y="230" width="200" height="18" rx="9" fill="#1d3b34"/>
+      <rect x="24" y="230" width="176" height="18" rx="9" fill="#f59e0b"/>
+    </g>
+  </g>
+
+  <text x="82" y="586" fill="#8bb8aa" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17">Upload photos. Scan with webcam. Extract expiry dates. Get instant freshness confidence.</text>
+  <text x="927" y="586" fill="#d8f7ed" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="800">foodexpirytracker</text>
+</svg>

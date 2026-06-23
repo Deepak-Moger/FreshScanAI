@@ -1,11 +1,13 @@
 {
-  "name": "my-project",
+  "name": "freshscan-ai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "dev:backend": "python app.py",
     "dev:full": "concurrently \"npm run dev:backend\" \"npm run dev\"",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "npm run typecheck && python -m py_compile app.py",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."
