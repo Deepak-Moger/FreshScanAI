@@ -6,8 +6,9 @@
     "dev": "next dev",
     "dev:backend": "python app.py",
     "dev:full": "concurrently \"npm run dev:backend\" \"npm run dev\"",
+    "start:hf": "concurrently -k -n flask,next \"gunicorn --bind 127.0.0.1:5000 --workers 1 --threads 4 --timeout 180 app:app\" \"next start -H 0.0.0.0 -p 7860\"",
     "typecheck": "next typegen && tsc --noEmit",
-    "check": "npm run typecheck && python -m py_compile app.py",
+    "check": "npm run typecheck && python scripts/check_python_syntax.py",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ."

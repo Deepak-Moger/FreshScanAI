@@ -34,4 +34,4 @@ jobs:
           python-version: "3.12"
 
       - name: Check backend syntax
-        run: python -m py_compile app.py
+        run: python scripts/check_python_syntax.py

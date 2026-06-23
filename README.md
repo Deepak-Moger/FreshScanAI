@@ -1,3 +1,16 @@
+---
+title: FreshScan AI
+colorFrom: green
+colorTo: blue
+sdk: docker
+app_port: 7860
+suggested_hardware: cpu-basic
+startup_duration_timeout: 1h
+fullWidth: true
+pinned: false
+short_description: Food freshness detection, webcam scanning, and expiry-label OCR.
+---
+
 <p align="center">
   <img src="./public/icon.svg" width="88" alt="FreshScan AI logo" />
 </p>
@@ -128,6 +141,28 @@ npm run dev:full
 
 Open `http://localhost:3000`.
 
+## Free Online Deployment
+
+Use a Hugging Face Docker Space for the full app. The Space runs Flask internally on port `5000` and exposes the Next.js dashboard on port `7860`.
+
+1. Create a Hugging Face Space:
+   - SDK: `Docker`
+   - Visibility: `Public`
+   - Hardware: `CPU Basic`
+2. Add the Space remote:
+
+```bash
+git remote add hf https://huggingface.co/spaces/YOUR_USERNAME/freshscan-ai
+```
+
+3. Push the app:
+
+```bash
+git push hf main
+```
+
+Free Spaces can sleep after inactivity, so the first request after a quiet period may take time to wake up.
+
 ## Scripts
 
 | Command | Purpose |
@@ -135,8 +170,9 @@ Open `http://localhost:3000`.
 | `npm run dev` | Start the Next.js frontend |
 | `npm run dev:backend` | Start the Flask backend on port `5000` |
 | `npm run dev:full` | Start frontend and backend together |
+| `npm run start:hf` | Production start command used by the Hugging Face Docker image |
 | `npm run typecheck` | Run TypeScript validation |
-| `npm run check` | Run TypeScript validation and Python syntax check |
+| `npm run check` | Run TypeScript validation and backend syntax check |
 | `npm run build` | Build the Next.js app |
 
 ## API Reference

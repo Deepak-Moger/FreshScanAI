@@ -20,9 +20,11 @@ uploads/
 # Frontend
 node_modules
 .next/
+.npm-cache/
 
 # Common ignores
 __pycache__/
 tsconfig.tsbuildinfo
 .DS_Store
 Thumbs.db
+README_HF.md
