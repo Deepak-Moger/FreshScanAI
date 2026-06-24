@@ -8,7 +8,7 @@ suggested_hardware: cpu-basic
 startup_duration_timeout: 1h
 fullWidth: true
 pinned: false
-short_description: Food freshness detection, webcam scanning, and expiry-label OCR.
+short_description: Food freshness, webcam scans, and expiry OCR.
 ---
 
 <p align="center">
